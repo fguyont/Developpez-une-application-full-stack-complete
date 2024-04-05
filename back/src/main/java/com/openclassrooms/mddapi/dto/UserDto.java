@@ -28,7 +28,7 @@ public class UserDto {
     private String name;
 
     @JsonIgnore
-    @Size(max = 50)
+    @Size(max = 255)
     private String password;
 
     private LocalDateTime createdAt;
