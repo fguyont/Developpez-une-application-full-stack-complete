@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "USERS", uniqueConstraints = {
+@Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
 })
 @Data
@@ -41,12 +41,11 @@ public class User {
     private String email;
 
     @NonNull
-    @Size(max = 50)
+    @Size(max = 255)
     @Column(name = "password")
     private String password;
 
-
-    @CreatedDate
+    @UpdateTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
