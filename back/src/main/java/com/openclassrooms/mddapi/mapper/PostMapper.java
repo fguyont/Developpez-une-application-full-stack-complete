@@ -30,7 +30,7 @@ public abstract class PostMapper implements EntityMapper<PostDto, Post> {
             @Mapping(source = "text", target = "text"),
             @Mapping(source = "date", target = "date"),
             @Mapping(target = "subject", expression = "java(this.subjectService.getById(postDto.getSubjectId()))"),
-            @Mapping(target = "user", expression = "java(this.userService.findById(postDto.getUserId()))"),
+            @Mapping(target = "user", expression = "java(this.userService.getById(postDto.getUserId()))"),
     })
     public abstract Post toEntity(PostDto postDto);
 

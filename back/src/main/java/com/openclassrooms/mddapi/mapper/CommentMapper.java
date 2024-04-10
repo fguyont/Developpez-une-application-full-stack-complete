@@ -28,7 +28,7 @@ public abstract class CommentMapper implements EntityMapper<CommentDto, Comment>
             @Mapping(source = "text", target = "text"),
             @Mapping(source = "date", target = "date"),
             @Mapping(target = "post", expression = "java(this.postService.getById(commentDto.getPostId()))"),
-            @Mapping(target = "user", expression = "java(this.userService.findById(commentDto.getUserId()))"),
+            @Mapping(target = "user", expression = "java(this.userService.getById(commentDto.getUserId()))"),
     })
     public abstract Comment toEntity(CommentDto commentDto);
 

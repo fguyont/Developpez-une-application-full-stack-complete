@@ -24,7 +24,7 @@ public abstract class SubjectMapper implements EntityMapper<SubjectDto, Subject>
     @Mappings({
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "description", target = "description"),
-            @Mapping(target = "users", expression = "java(Optional.ofNullable(subjectDto.getUserIds()).orElseGet(Collections::emptyList).stream().map(userId -> { User user = this.userService.findById(userId); if (user != null) { return user; } return null; }).collect(Collectors.toList()))"),
+            @Mapping(target = "users", expression = "java(Optional.ofNullable(subjectDto.getUserIds()).orElseGet(Collections::emptyList).stream().map(userId -> { User user = this.userService.getById(userId); if (user != null) { return user; } return null; }).collect(Collectors.toList()))"),
     })
     public abstract Subject toEntity(SubjectDto subjectDto);
 
