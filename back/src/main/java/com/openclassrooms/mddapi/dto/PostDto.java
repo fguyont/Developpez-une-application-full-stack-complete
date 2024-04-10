@@ -25,9 +25,12 @@ public class PostDto {
     @Size(max = 5000)
     private String text;
 
-    //TODO: I might need more information about the user in the post like his name. I need an another solution (if I have, PostMapper to fix).
     private Long userId;
 
+    private String userName;
+
     private Long subjectId;
+
+    private String subjectName;
 
 }

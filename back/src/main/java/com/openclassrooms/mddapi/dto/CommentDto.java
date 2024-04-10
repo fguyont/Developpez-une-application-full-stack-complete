@@ -23,6 +23,8 @@ public class CommentDto {
 
     private Long userId;
 
+    private String userName;
+
     private Long postId;
 
 }
