@@ -2,14 +2,10 @@ package com.openclassrooms.mddapi.controller;
 
 import com.openclassrooms.mddapi.mapper.SubjectMapper;
 import com.openclassrooms.mddapi.model.Subject;
-import com.openclassrooms.mddapi.model.Subject;
 import com.openclassrooms.mddapi.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +35,28 @@ public class SubjectController {
             }
 
             return ResponseEntity.ok().body(this.subjectMapper.toDto(subject));
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PostMapping("/{id}/follow")
+    public ResponseEntity<?> follow(@PathVariable("id") String id) {
+        try {
+            this.subjectService.follow(Long.parseLong(id));
+
+            return ResponseEntity.ok().build();
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PostMapping("/{id}/unfollow")
+    public ResponseEntity<?> unfollow(@PathVariable("id") String id) {
+        try {
+            this.subjectService.unfollow(Long.parseLong(id));
+
+            return ResponseEntity.ok().build();
         } catch (NumberFormatException e) {
             return ResponseEntity.badRequest().build();
         }
