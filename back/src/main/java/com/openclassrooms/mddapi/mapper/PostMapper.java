@@ -4,7 +4,6 @@ import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.model.Post;
 import com.openclassrooms.mddapi.model.Subject;
 import com.openclassrooms.mddapi.model.User;
-import com.openclassrooms.mddapi.service.PostService;
 import com.openclassrooms.mddapi.service.SubjectService;
 import com.openclassrooms.mddapi.service.UserService;
 import org.mapstruct.Mapper;
@@ -17,7 +16,7 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring", uses = {PostService.class}, imports = {Arrays.class, Collectors.class, Post.class, User.class, Subject.class, Collections.class, Optional.class})
+@Mapper(componentModel = "spring", uses = {SubjectService.class, UserService.class}, imports = {Arrays.class, Collectors.class, Post.class, User.class, Subject.class, Collections.class, Optional.class})
 public abstract class PostMapper implements EntityMapper<PostDto, Post> {
 
     @Autowired

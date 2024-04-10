@@ -4,7 +4,6 @@ import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.model.Subject;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.service.SubjectService;
-import com.openclassrooms.mddapi.service.UserService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -17,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
-@Mapper(componentModel = "spring", uses = {UserService.class}, imports = {Arrays.class, Collectors.class, Subject.class, User.class, Collections.class, Optional.class})
+@Mapper(componentModel = "spring", uses = {SubjectService.class}, imports = {Arrays.class, Collectors.class, Subject.class, User.class, Collections.class, Optional.class})
 public abstract class UserMapper implements EntityMapper<UserDto, User> {
     @Autowired
     SubjectService subjectService;
