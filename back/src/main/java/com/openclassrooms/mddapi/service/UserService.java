@@ -10,7 +10,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findById(Long id) {
+    public User getById(Long id) {
         return this.userRepository.findById(id).orElse(null);
     }
 }
