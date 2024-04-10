@@ -21,10 +21,16 @@ public class PostController {
     @Autowired
     private PostMapper postMapper;
 
-    @GetMapping()
+    // Currently not used in the application but can be useful for tests and debug
+    @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         List<Post> posts = this.postService.getAll();
+        return ResponseEntity.ok().body(this.postMapper.toDto(posts));
+    }
 
+    @GetMapping()
+    public ResponseEntity<?> getFeedPosts() {
+        List<Post> posts = this.postService.getFeedPosts();
         return ResponseEntity.ok().body(this.postMapper.toDto(posts));
     }
 
