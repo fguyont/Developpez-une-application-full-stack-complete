@@ -2,14 +2,14 @@ package com.openclassrooms.mddapi.controller;
 
 import com.openclassrooms.mddapi.mapper.PostMapper;
 import com.openclassrooms.mddapi.model.Post;
+import com.openclassrooms.mddapi.payload.request.CreatePostRequest;
 import com.openclassrooms.mddapi.service.PostService;
+import com.openclassrooms.mddapi.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,6 +17,9 @@ import java.util.List;
 public class PostController {
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private SubjectService subjectService;
 
     @Autowired
     private PostMapper postMapper;
@@ -42,6 +45,17 @@ public class PostController {
             if (post == null) {
                 return ResponseEntity.notFound().build();
             }
+
+            return ResponseEntity.ok().body(this.postMapper.toDto(post));
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PostMapping()
+    public ResponseEntity<?> create(@Valid @RequestBody CreatePostRequest createPostRequest) {
+        try {
+            Post post = this.postService.create(new Post(createPostRequest.getTitle(), createPostRequest.getText(), subjectService.getById(createPostRequest.getSubjectId())));
 
             return ResponseEntity.ok().body(this.postMapper.toDto(post));
         } catch (NumberFormatException e) {
