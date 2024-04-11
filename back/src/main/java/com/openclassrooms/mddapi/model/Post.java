@@ -6,7 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -36,7 +36,7 @@ public class Post {
     @Column(name = "date", updatable = false)
     private LocalDateTime date;
 
-    @NotBlank
+    @NotNull
     @Size(max = 5000)
     @Column(name = "text")
     private String text;
@@ -49,4 +49,9 @@ public class Post {
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
     private Subject subject;
 
+    public Post(String title, String text, Subject subject) {
+        this.title = title;
+        this.text = text;
+        this.subject = subject;
+    }
 }

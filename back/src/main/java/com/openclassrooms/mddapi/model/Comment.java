@@ -1,10 +1,9 @@
 package com.openclassrooms.mddapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -26,7 +25,7 @@ public class Comment {
     @Column(name = "text")
     private String text;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "date", updatable = false)
     private Date date;
 
@@ -37,4 +36,9 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+    public Comment(String text, Post post) {
+        this.text = text;
+        this.post = post;
+    }
 }
