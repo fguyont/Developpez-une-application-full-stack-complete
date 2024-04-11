@@ -2,8 +2,8 @@ package com.openclassrooms.mddapi.model;
 
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -46,7 +46,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @UpdateTimestamp
+    @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
