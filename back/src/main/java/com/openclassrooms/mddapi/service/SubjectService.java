@@ -24,6 +24,7 @@ public class SubjectService {
     @Autowired
     private UserRepository userRepository;
 
+    //TODO: To sort the subjects by name ascending
     public List<Subject> getAll() {
         return subjectRepository.findAll();
     }
