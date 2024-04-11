@@ -46,4 +46,13 @@ public class PostService {
         // TODO: It is possible to sort the posts by date descending
         return posts;
     }
+
+    public Post create (Post post) {
+        Optional<User> user = this.userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (user.isPresent()) {
+            post.setUser(user.get());
+        }
+        return this.postRepository.save(post);
+    }
 }
