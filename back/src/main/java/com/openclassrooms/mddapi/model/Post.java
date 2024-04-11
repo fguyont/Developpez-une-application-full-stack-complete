@@ -2,7 +2,7 @@ package com.openclassrooms.mddapi.model;
 
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -32,7 +32,7 @@ public class Post {
     @Column(name = "title")
     private String title;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "date", updatable = false)
     private LocalDateTime date;
 
