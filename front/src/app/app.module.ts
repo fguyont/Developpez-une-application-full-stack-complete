@@ -13,10 +13,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { PostComponent } from './pages/post/post.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { SubjectComponent } from './pages/subject/subject.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NavbarComponent } from './pages/shared/navbar/navbar.component';
+import { UserComponent } from './pages/user/user.component';
+import { CreatePostComponent } from './pages/create-post/create-post.component'
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,9 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
