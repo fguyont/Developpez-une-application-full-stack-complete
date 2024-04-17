@@ -1,0 +1,12 @@
+<p>post works!</p>
+
+<app-navbar></app-navbar>
+
+  <div *ngFor="let post of posts">
+          <h2>{{ post.title }}</h2>
+            <p>{{ post.date | date: "dd/MM/YYYY" }}</p>
+            <p>{{ post.userName }}</p>
+          <p>{{ post.text }}</p>
+  </div>
+
+  <button [routerLink]="['/createpost']" mat-raised-button color="primary">Créer un article</button>
