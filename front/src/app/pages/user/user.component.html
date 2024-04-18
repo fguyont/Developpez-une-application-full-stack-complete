@@ -4,7 +4,7 @@
 
 <div class="register" fxLayout="row" fxLayoutAlign="center center">
   <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
-       <input matInput placeholder="Email" formControlName="email" value={{user?.email}}>
+       <input matInput placeholder="Email" formControlName="email" value="{{user?.email}}">
        <input matInput placeholder="Name" formControlName="name" value="{{user?.name}}">
        <input matInput placeholder="Password" formControlName="password">
       <!-- <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button> -->
@@ -15,6 +15,7 @@
 
 <div *ngFor="let subject of subjects">
   <h2>{{ subject.name }}</h2>
-    <p>{{ subject.name }}</p>
   <p>{{ subject.description }}</p>
+
+  <button (click)="unfollow(subject.id)">Se désabonner</button>
 </div>

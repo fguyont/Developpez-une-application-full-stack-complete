@@ -27,49 +27,77 @@ export class UserComponent implements OnInit {
 
   public onError = false;
 
-  public form = this.fb.group({
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.email
-      ]
-    ],
-    name: [
-      '',
-      [
-        Validators.required,
-        Validators.min(3),
-        Validators.max(20)
-      ]
-    ],
-    password: [
-      '',
-      [
-        Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})'),
-      ]
-    ]
-  });
+  public form:any;
+
+  // public form = this.fb.group({
+  //   email: [
+  //     this.user?.email,
+  //     [
+
+  //     ]
+  //   ],
+  //   name: [
+  //     this.user?.name,
+  //     [
+
+  //     ]
+  //   ],
+  //   password: [
+  //     this.user?.password,
+  //     [
+  //       Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})'),
+  //     ]
+  //   ]
+  // });
 
   public ngOnInit(): void {
     this.userService
-      .getById(this.sessionService.sessionInformation!.id.toString())
-      .subscribe((user: User) => this.user = user);
+      // .getById(this.sessionService.sessionInformation!.id.toString())
+      .getConnectedUser()
+      .subscribe((user: User) => {this.user = user; console.log(this.user)});
+
     this.subjectService
       .getFollowedSubjects()
       .subscribe((subjects: Subject[]) => this.subjects = subjects);
+
+      this.form = this.fb.group({
+        email: [
+          '',
+          [
+
+          ]
+        ],
+        name: [
+          '',
+          [
+
+          ]
+        ],
+        password: [
+          '',
+          [
+            Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})'),
+          ]
+        ]
+      });
   }
 
-  public back(): void {
-    window.history.back();
+  public unfollow(id: number) {
+    this.subjectService.unfollow(id.toString()).subscribe(() => {
+    });
   }
 
   public submit(): void {
     const registerRequest = this.form.value as RegisterRequest;
-    this.userService.update(this.sessionService.sessionInformation!.id.toString(), registerRequest).subscribe({
+    console.log(registerRequest)
+    if(this.user) {
+    // this.userService.update(this.sessionService.sessionInformation!.id.toString(), registerRequest).subscribe({
+      this.userService.update(this.user.id.toString(), registerRequest).subscribe({
         next: (_: void) => this.router.navigate(['/login']),
         error: _ => this.onError = true,
       }
     );
+    }
+
   }
 }

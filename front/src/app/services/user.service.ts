@@ -21,4 +21,8 @@ export class UserService {
   public update(id:string, registerRequest: RegisterRequest): Observable<void> {
     return this.httpClient.put<void>(`${this.pathService}/${id}`, registerRequest);
   }
+
+  public getConnectedUser():Observable<User> {
+    return this.httpClient.get<User>(`${this.pathService}/me`)
+  }
 }
