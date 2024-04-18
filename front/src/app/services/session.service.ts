@@ -17,12 +17,14 @@ export class SessionService {
   }
 
   public logIn(user: SessionInformation): void {
+    localStorage.setItem('token', user.token);
     this.sessionInformation = user;
     this.isLogged = true;
     this.next();
   }
 
   public logOut(): void {
+    localStorage.removeItem('token');
     this.sessionInformation = undefined;
     this.isLogged = false;
     this.next();
