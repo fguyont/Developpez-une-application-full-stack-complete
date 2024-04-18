@@ -25,6 +25,6 @@ export class SubjectService {
   }
 
   public unfollow(id: string): Observable<void> {
-    return this.httpClient.delete<void>(`${this.pathService}/${id}/unfollow`);
+    return this.httpClient.post<void>(`${this.pathService}/${id}/unfollow`, null);
   }
 }

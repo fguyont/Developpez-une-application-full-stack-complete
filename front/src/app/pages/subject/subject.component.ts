@@ -23,4 +23,9 @@ export class SubjectComponent implements OnInit {
     })
   }
 
+  public follow(id: number) {
+    this.subjectService.follow(id.toString()).subscribe(() => {
+    });
+  }
+
 }
