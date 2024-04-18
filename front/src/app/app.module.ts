@@ -22,9 +22,10 @@ import { NavbarComponent } from './pages/shared/navbar/navbar.component';
 import { UserComponent } from './pages/user/user.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component'
 import { MatSelectModule } from '@angular/material/select';
+import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent, PostDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -7,6 +7,7 @@ import { PostComponent } from './pages/post/post.component';
 import { SubjectComponent } from './pages/subject/subject.component';
 import { UserComponent } from './pages/user/user.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
+import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 
 // consider a guard combined with canLoad / canActivate route option
 // to manage unauthenticated user to access private routes
@@ -16,7 +17,8 @@ const routes: Routes = [{ path: '', component: HomeComponent },
 { path: 'post', component: PostComponent },
 { path: 'subject', component: SubjectComponent },
 { path: 'user', component: UserComponent},
-{ path: 'createpost', component: CreatePostComponent}
+{ path: 'createpost', component: CreatePostComponent},
+{ path: 'post/:id', component: PostDetailComponent}
 
 ];
 
