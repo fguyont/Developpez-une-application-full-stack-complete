@@ -1,0 +1,26 @@
+<p>post-detail works!</p>
+
+<h2>{{ post?.title }}</h2>
+  <div class="content">
+    <div class="title-date">
+      <p>{{ post?.date | date: "dd/MM/YYYY" }}</p>
+      <p>{{ post?.userName }}</p>
+      <p>{{ post?.subjectName }}</p>
+    </div>
+    <p class="content-text">Content : {{ post?.text }}</p>
+  </div>
+
+  <div *ngFor="let comment of comments">
+    <div class="flex space-x-4">
+      <p>{{comment.userName}}</p>
+      <div  class="comment-content">
+      <p>{{comment.text}}</p>
+    </div>
+      </div>
+  </div>
+
+  <form  [formGroup]="form" (ngSubmit)="submit()">
+  <textarea matInput formControlName="text" placeholder="Saisir"></textarea>
+      <!-- <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button> -->
+      <button mat-raised-button color="primary" type="submit" >Submit</button>
+    </form>
