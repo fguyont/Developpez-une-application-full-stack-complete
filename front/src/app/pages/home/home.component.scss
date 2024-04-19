@@ -5,3 +5,34 @@
   align-items: center;
   flex-direction: column;
 }
+
+.homepageButtonBlock {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepageButtonBlock button{
+  margin: 4rem 4rem;
+  width: 10rem;
+  font-size: large;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .homepageButtonBlock {
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem;
+  }
+
+  .homepageButtonBlock button{
+    margin: 1rem;
+  }
+
+  img {
+    width: 17rem;
+  }
+}
