@@ -1,3 +1,9 @@
+<div class="loginNavbar">
+  <app-login-navbar></app-login-navbar>
+</div>
+
+<app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
+
 <div class="register" fxLayout="row" fxLayoutAlign="center center">
       <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
            <input matInput placeholder="Email" formControlName="email">

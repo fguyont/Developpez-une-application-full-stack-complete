@@ -14,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   public hide = true;
   public onError = false;
+  public linkToBack='/';
 
   public form = this.fb.group({
     email: [
@@ -27,7 +28,7 @@ export class LoginComponent {
       '',
       [
         Validators.required,
-        Validators.min(3)
+        Validators.min(8)
       ]
     ]
   });
@@ -45,7 +46,7 @@ export class LoginComponent {
         this.sessionService.logIn(response);
         this.router.navigate(['/post']);
       },
-      error: error => this.onError = true,
+      error: () => this.onError = true,
     });
   }
 }

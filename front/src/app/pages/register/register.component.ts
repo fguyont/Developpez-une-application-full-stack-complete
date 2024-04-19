@@ -12,6 +12,7 @@ import { RegisterRequest } from '../../models/register-request';
 export class RegisterComponent {
 
   public onError = false;
+  public linkToBack='/';
 
   public form = this.fb.group({
     email: [
