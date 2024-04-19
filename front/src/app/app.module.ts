@@ -24,7 +24,7 @@ import { CreatePostComponent } from './pages/create-post/create-post.component'
 import { MatSelectModule } from '@angular/material/select';
 import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { LoginNavbarComponent } from './pages/shared/login-navbar/login-navbar.component';
-import { BackArrowLinkComponent } from './pages/shared/arrow-link/back-arrow-link.component';
+import { BackArrowLinkComponent } from './pages/shared/back-arrow-link/back-arrow-link.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent, PostDetailComponent, LoginNavbarComponent, BackArrowLinkComponent],
