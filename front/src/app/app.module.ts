@@ -17,7 +17,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './pages/post/post.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { SubjectComponent } from './pages/subject/subject.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavbarComponent } from './pages/shared/navbar/navbar.component';
 import { UserComponent } from './pages/user/user.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component'
@@ -25,9 +25,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { LoginNavbarComponent } from './pages/shared/login-navbar/login-navbar.component';
 import { BackArrowLinkComponent } from './pages/shared/back-arrow-link/back-arrow-link.component';
+import { CommonNavbarComponent } from './pages/shared/common-navbar/common-navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MobileNavbarComponent } from './pages/shared/mobile-navbar/mobile-navbar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { NavbarHeaderComponent } from './pages/shared/navbar-header/navbar-header.component'
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent, PostDetailComponent, LoginNavbarComponent, BackArrowLinkComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent, PostDetailComponent, LoginNavbarComponent, BackArrowLinkComponent, CommonNavbarComponent, MobileNavbarComponent, NavbarHeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,9 +49,12 @@ import { BackArrowLinkComponent } from './pages/shared/back-arrow-link/back-arro
     ReactiveFormsModule,
     HttpClientModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FontAwesomeModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

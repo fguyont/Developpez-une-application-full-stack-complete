@@ -1,0 +1,58 @@
+.mat-toolbar {
+  background-color: white;
+  border: 1px solid black;
+  padding: 2rem;
+}
+
+.mat-toolbar img {
+  width: 7rem;
+  padding-top: 0.5rem;
+  margin-left: -2rem;
+}
+
+.mat-toolbar button {
+  display: inline-flex;
+  position: absolute;
+  right: 0px;
+}
+
+.sidenavContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: none;
+}
+
+.sidenav {
+  width: 12rem;
+  background: white;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.navbarLink {
+  display: inline-grid;
+  float: right;
+  margin-top: 4rem;
+}
+
+.navbarLink a {
+  font-size: x-large;
+}
+
+.userIcon {
+  background-color: lightgray;
+  border-radius: 40px;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 0.8rem;
+}
+
+.closeWindowIcon {
+  margin-left: -1rem;
+}

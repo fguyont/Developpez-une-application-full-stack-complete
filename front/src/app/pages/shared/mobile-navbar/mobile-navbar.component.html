@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <img src="../../../assets/logo_p6.png" />
+  <button mat-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenavContainer">
+  <mat-sidenav #sidenav mode="side" class="sidenav">
+    <div class="navbarLink">
+      <a mat-button routerLink="/post">Articles</a>
+      <a mat-button routerLink="/subject">Thèmes</a>
+      <div class="userIcon">
+        <a mat-button routerLink="/user">
+          <fa-icon [icon]="faUserIcon"></fa-icon>
+        </a>
+      </div>
+    </div>
+    <div class="closeWindowIcon">
+      <button mat-button (click)="sidenav.toggle()">
+        <fa-icon [icon]="faWindowCloseIcon"></fa-icon>
+      </button>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>
