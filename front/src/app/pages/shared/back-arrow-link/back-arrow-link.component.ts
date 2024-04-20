@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BackArrowLinkComponent implements OnInit {
 
-  @Input() linkToBack:string='';
+  @Input() linkToBack: string = '';
 
   constructor() { }
 
