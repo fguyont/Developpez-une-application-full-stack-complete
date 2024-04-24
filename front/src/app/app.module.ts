@@ -30,7 +30,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MobileNavbarComponent } from './pages/shared/mobile-navbar/mobile-navbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { NavbarHeaderComponent } from './pages/shared/navbar-header/navbar-header.component'
+import { NavbarHeaderComponent } from './pages/shared/navbar-header/navbar-header.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent, PostDetailComponent, LoginNavbarComponent, BackArrowLinkComponent, CommonNavbarComponent, MobileNavbarComponent, NavbarHeaderComponent],
@@ -52,7 +53,8 @@ import { NavbarHeaderComponent } from './pages/shared/navbar-header/navbar-heade
     MatSelectModule,
     FontAwesomeModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent],
