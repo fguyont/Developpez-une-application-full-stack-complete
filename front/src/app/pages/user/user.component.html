@@ -1,21 +1,77 @@
-<p>user works!</p>
+<app-navbar-header></app-navbar-header>
 
-<app-navbar></app-navbar>
+<div class="edit-form">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div><h1>Profil d'utilisateur</h1></div>
 
-<div class="register" fxLayout="row" fxLayoutAlign="center center">
-  <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
-       <input matInput placeholder="Email" formControlName="email" value="{{user?.email}}">
-       <input matInput placeholder="Name" formControlName="name" value="{{user?.name}}">
-       <input matInput placeholder="Password" formControlName="password">
-      <!-- <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button> -->
-      <button mat-raised-button color="primary" type="submit" >Submit</button>
-      <span *ngIf="onError" class="error ml2">An error occurred</span>
+    <div class="block">
+      <div><label>Nom d'utilisateur</label></div>
+      <div>
+        <input
+          matInput
+          [type]="'text'"
+          formControlName="name"
+          value="{{ user?.name }}"
+        />
+      </div>
+    </div>
+
+    <div class="block">
+      <div><label>E-mail</label></div>
+      <div>
+        <input
+          matInput
+          [type]="'text'"
+          formControlName="email"
+          value="{{ user?.email }}"
+        />
+      </div>
+    </div>
+
+    <div class="block">
+      <div><label>Mot de passe</label></div>
+      <div>
+        <input matInput [type]="'password'" formControlName="password" />
+      </div>
+    </div>
+
+    <div class="button-block">
+      <div class="save-button">
+        <button
+          mat-raised-button
+          color="#7550EC"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Sauvegarder
+        </button>
+      </div>
+      <div class="logout-button">
+        <button>Se déconnecter</button>
+      </div>
+    </div>
   </form>
 </div>
 
-<div *ngFor="let subject of subjects">
-  <h2>{{ subject.name }}</h2>
-  <p>{{ subject.description }}</p>
+<div class="line">
+</div>
 
-  <button (click)="unfollow(subject.id)">Se désabonner</button>
+<div class="user-sub"><h1>Abonnements</h1></div>
+
+<div class="subject-wrapper">
+  <div *ngFor="let subject of subjects">
+    <div class="subject-card">
+      <mat-card>
+        <mat-card-title> {{ subject.name }}</mat-card-title>
+        <mat-card-content>
+          <p>{{ subject.description }}</p>
+        </mat-card-content>
+        <div class="subject-follow-button">
+          <button mat-button type="submit" (click)="unfollow(subject.id)">
+            Se désabonner
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </div>
