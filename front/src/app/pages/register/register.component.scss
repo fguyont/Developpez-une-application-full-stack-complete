@@ -1,5 +1,54 @@
 @media screen and (max-width: 767px) {
-  .loginNavbar {
+  .login-navbar {
     display: none;
   }
+}
+
+@media screen and (min-width: 768px) {
+  .image-spot {
+    display: none;
+  }
+}
+
+.register-form {
+  display: flex;
+  justify-content: center;
+}
+
+.register-form  div h1 {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.register-form div {
+  margin: auto;
+}
+
+.register-form .block {
+  margin: 1.8rem;
+}
+
+.button-block {
+  display: flex;
+  justify-content: center;
+}
+
+.button-block button {
+  border-radius: 8px;
+}
+
+input {
+  border-radius: 8px;
+  width: 15rem;
+  height: 2.5rem;
+  font-size: large;
+}
+
+.image-block {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 15rem;
 }
