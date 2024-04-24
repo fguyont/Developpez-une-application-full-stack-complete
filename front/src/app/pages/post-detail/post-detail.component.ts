@@ -6,6 +6,7 @@ import { Post } from 'src/app/models/post';
 import { CommentService } from 'src/app/services/comment.service';
 import { CreateCommentRequest } from 'src/app/models/create-comment-request';
 import { Comment } from 'src/app/models/comment';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -19,7 +20,11 @@ export class PostDetailComponent implements OnInit {
 
   public id!: string | null;
 
-  public comments!: Comment[]
+  public comments!: Comment[];
+
+  public linkToBack: string = '/post';
+
+  public faPaperPlaneIcon = faPaperPlane;
 
   public form = this.fb.group({
     text: [
@@ -39,25 +44,23 @@ export class PostDetailComponent implements OnInit {
   public ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.id) {
-    this.postService
-      .getById(this.id)
-      .subscribe((post: Post) => this.post = post);
-    this.commentService
-      .getAllByPostId(this.id)
-      .subscribe((comments: Comment[]) => this.comments = comments);
+      this.postService
+        .getById(this.id)
+        .subscribe((post: Post) => this.post = post);
+      this.refreshComments();
     }
   }
 
   public submit() {
     if (this.id) {
-      this.commentService.create(this.id, { text: this.form.value.text} as CreateCommentRequest).subscribe(() => {
-        this.getComments()
+      this.commentService.create(this.id, { text: this.form.value.text } as CreateCommentRequest).subscribe(() => {
+        this.refreshComments()
       })
     }
   }
 
 
-  public getComments() {
+  public refreshComments() {
     if (this.id) {
       this.commentService.getAllByPostId(this.id).subscribe((comments) => {
         this.comments = comments

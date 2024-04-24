@@ -1,26 +1,72 @@
-<p>post-detail works!</p>
+<app-navbar-header></app-navbar-header>
 
-<h2>{{ post?.title }}</h2>
-  <div class="content">
-    <div class="title-date">
-      <p>{{ post?.date | date: "dd/MM/YYYY" }}</p>
-      <p>{{ post?.userName }}</p>
-      <p>{{ post?.subjectName }}</p>
-    </div>
-    <p class="content-text">Content : {{ post?.text }}</p>
+<div class="arrow-card-block">
+  <div>
+    <app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
   </div>
-
-  <div *ngFor="let comment of comments">
-    <div class="flex space-x-4">
-      <p>{{comment.userName}}</p>
-      <div  class="comment-content">
-      <p>{{comment.text}}</p>
-    </div>
+  <div class="card">
+    <mat-card class="mat-elevation-z0">
+      <mat-card-title [routerLink]="['/post', post?.id]">{{
+        post?.title
+      }}</mat-card-title>
+      <div class="date-author-block">
+        <mat-card-subtitle>
+          <div class="date">
+            {{ post?.date | date : "dd/MM/YYYY  hh:mm" }}
+          </div>
+          <div class="author">{{ post?.userName }}</div>
+          <div class="subject">{{ post?.subjectName }}</div>
+        </mat-card-subtitle>
       </div>
+      <mat-card-content>
+        <p>{{ post?.text }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="line"></div>
+
+<div class="comment-title">
+  <h2>Commentaires</h2>
+</div>
+
+<div class="comment-area">
+  <div class="comment-block" *ngFor="let comment of comments">
+    <div class="comment-user">
+      <p>{{ comment.userName }}</p>
+    </div>
+    <div class="comment">
+      <mat-card>
+        <mat-card-content>
+          <p>{{ comment.text }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="comment-user-mobile">
+      <p>{{ comment.userName }}</p>
+    </div>
   </div>
 
-  <form  [formGroup]="form" (ngSubmit)="submit()">
-  <textarea matInput formControlName="text" placeholder="Saisir"></textarea>
-      <!-- <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button> -->
-      <button mat-raised-button color="primary" type="submit" >Submit</button>
+  <div class="create-comment-block">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="comment-textarea">
+        <textarea
+          matInput
+          formControlName="text"
+          placeholder="Ecrivez ici votre commentaire"
+        ></textarea>
+      </div>
+      <div class="comment-send-button">
+        <button
+          mat-raised-button
+          color="primary"
+          class="mat-elevation-z0"
+          type="submit"
+        >
+          <fa-icon [icon]="faPaperPlaneIcon"></fa-icon>
+        </button>
+      </div>
     </form>
+  </div>
+</div>
