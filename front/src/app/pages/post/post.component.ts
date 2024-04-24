@@ -11,6 +11,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostComponent implements OnInit {
 
   posts: Post[] | undefined;
+  public isDescending = true;
 
   constructor(private postService: PostService, private router: Router) { }
 
@@ -21,7 +22,18 @@ export class PostComponent implements OnInit {
   public getAll(): void {
     this.postService.getAll().subscribe((posts) => {
       this.posts = posts;
+      this.sortByDescending();
     })
+  }
+
+  public sortByDescending(): void {
+    this.posts?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    this.isDescending = true;
+  }
+
+  public sortByAscending(): void {
+    this.posts?.sort((b, a) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    this.isDescending = false;
   }
 
 }

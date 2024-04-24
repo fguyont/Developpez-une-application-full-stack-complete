@@ -1,13 +1,58 @@
 <app-navbar-header></app-navbar-header>
 
-<div *ngFor="let post of posts">
-  <a [routerLink]="['/post', post.id]">Detail</a>
-  <h2>{{ post.title }}</h2>
-  <p>{{ post.date | date : "dd/MM/YYYY" }}</p>
-  <p>{{ post.userName }}</p>
-  <p>{{ post.text }}</p>
+<div class="post-block">
+  <div class="create-post-block">
+    <button [routerLink]="['/createpost']" mat-raised-button color="primary">
+      Créer un article
+    </button>
+  </div>
+
+  <div class="empty-post">
+    <div>
+      <label *ngIf="posts?.length === 0"
+        >Aucun article. Veuillez vous abonner à un thème.</label
+      >
+    </div>
+  </div>
+
+  <div class="sort-block">
+    <div *ngIf="isDescending">
+      <button mat-icon-button class="filter-button" (click)="sortByAscending()">
+        <span>Trier par </span>
+        <mat-icon>arrow_downward</mat-icon>
+      </button>
+    </div>
+
+    <div *ngIf="!isDescending">
+      <button
+        mat-icon-button
+        class="filter-button"
+        (click)="sortByDescending()"
+      >
+        <span>Trier par </span>
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
 
-<button [routerLink]="['/createpost']" mat-raised-button color="primary">
-  Créer un article
-</button>
+<div class="post-wrapper">
+  <div *ngFor="let post of posts">
+    <mat-card>
+      <mat-card-title [routerLink]="['/post', post.id]">{{
+        post.title
+      }}</mat-card-title>
+      <div class="date-author-block">
+        <mat-card-subtitle>
+          <div class="date">
+            {{ post.date | date : "dd/MM/YYYY  hh:mm" }}
+          </div>
+          <div class="author">{{ post.userName }}</div>
+        </mat-card-subtitle>
+      </div>
+      <mat-card-content>
+        <p>{{ post.text }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
