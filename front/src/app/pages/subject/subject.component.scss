@@ -1,0 +1,120 @@
+button {
+  background-color: #7550EC;
+  color: white;
+  width: 10rem;
+}
+
+mat-card {
+  background-color: lightgray;
+  min-height: 15rem;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 885px) {
+  .subject-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-columns: 50%;
+    grid-row-gap: 2rem;
+    grid-column-gap: 4rem;
+    padding: 1rem;
+    margin-left: 0.1rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .subject-follow-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 35%;
+  }
+}
+
+@media screen and (min-width: 429px) and (max-width: 884px) {
+  .subject-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-columns: 50%;
+    grid-gap: 1rem;
+    padding: 1rem;
+    margin-left: 0.1rem;
+    margin-right: 0.5rem;
+  }
+
+  .subject-follow-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 40%;
+    display: table;
+  }
+}
+
+.subject-card {
+  position: relative;
+}
+
+@media screen and (min-width: 414px) and (max-width: 428px) {
+  .subject-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-columns: 50%;
+    grid-gap: 1rem;
+    padding: 1rem;
+    margin-left: 0.1rem;
+    margin-right: 0.5rem;
+  }
+
+  .subject-follow-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 30%;
+    display: table;
+  }
+}
+
+.subject-card {
+  position: relative;
+}
+
+@media screen and (min-width: 375px) and (max-width: 413px) {
+  .subject-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-columns: 50%;
+    grid-gap: 1rem;
+    padding: 1rem;
+    margin-left: 0.1rem;
+    margin-right: 0.5rem;
+  }
+
+  .subject-follow-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 27%;
+    display: table;
+  }
+}
+
+.subject-card {
+  position: relative;
+}
+
+@media screen and (max-width: 374px) {
+  .subject-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-columns: 50%;
+    grid-gap: 1rem;
+    padding: 1rem;
+    margin-left: 0.1rem;
+    margin-right: 0.5rem;
+  }
+
+  .subject-follow-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 22%;
+    display: table;
+  }
+}
+
