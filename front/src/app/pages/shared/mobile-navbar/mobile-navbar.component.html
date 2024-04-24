@@ -5,18 +5,18 @@
   </button>
 </mat-toolbar>
 
-<mat-sidenav-container class="sidenavContainer">
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" class="sidenav">
-    <div class="navbarLink">
+    <div class="navbar-link">
       <a mat-button routerLink="/post">Articles</a>
       <a mat-button routerLink="/subject">Thèmes</a>
-      <div class="userIcon">
+      <div class="user-icon">
         <a mat-button routerLink="/user">
           <fa-icon [icon]="faUserIcon"></fa-icon>
         </a>
       </div>
     </div>
-    <div class="closeWindowIcon">
+    <div class="close-window-icon">
       <button mat-button (click)="sidenav.toggle()">
         <fa-icon [icon]="faWindowCloseIcon"></fa-icon>
       </button>

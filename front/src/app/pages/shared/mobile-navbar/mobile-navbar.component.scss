@@ -16,7 +16,7 @@
   right: 0px;
 }
 
-.sidenavContainer {
+.sidenav-container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -31,17 +31,17 @@
   border-bottom: 1px solid black;
 }
 
-.navbarLink {
+.navbar-link {
   display: inline-grid;
   float: right;
   margin-top: 4rem;
 }
 
-.navbarLink a {
+.navbar-link a {
   font-size: x-large;
 }
 
-.userIcon {
+.user-icon {
   background-color: lightgray;
   border-radius: 40px;
   padding-left: 0rem;
@@ -53,6 +53,6 @@
   right: 0.8rem;
 }
 
-.closeWindowIcon {
+.close-window-icon {
   margin-left: -1rem;
 }
