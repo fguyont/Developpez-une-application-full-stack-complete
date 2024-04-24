@@ -1,19 +1,39 @@
-<div class="loginNavbar">
+<div class="login-navbar">
   <app-login-navbar></app-login-navbar>
 </div>
 
 <app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
 
-<div class="login" fxLayout="row" fxLayoutAlign="center center">
-      <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
-          <input matInput placeholder="Email" formControlName="email">
-               <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
-                      formControlName="password">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                      [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                 </button>
-          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
-          <p *ngIf="onError" class="error">An error occurred</p>
-      </form>
+<div class="image-spot">
+  <div class="image-block">
+    <img src="../../../assets/logo_p6.png" />
+  </div>
+</div>
+
+<div class="login-form">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div><h1>Se connecter</h1></div>
+    <div class="block">
+      <div><label>E-mail ou nom d'utilisateur</label></div>
+
+      <div><input matInput [type]="'text'" formControlName="email" /></div>
+    </div>
+
+    <div class="block">
+      <div><label>Mot de passe</label></div>
+      <div>
+        <input matInput [type]="'password'" formControlName="password" />
+      </div>
+    </div>
+    <div class="button-block">
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Se connecter
+      </button>
+    </div>
+    <p *ngIf="onError" color="red">Erreur de connexion</p>
+  </form>
 </div>
