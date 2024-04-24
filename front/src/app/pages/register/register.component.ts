@@ -33,7 +33,8 @@ export class RegisterComponent {
     password: [
       '',
       [
-        Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})'),
+        Validators.required,
+        Validators.pattern(new RegExp("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})")),
       ]
     ]
   });
