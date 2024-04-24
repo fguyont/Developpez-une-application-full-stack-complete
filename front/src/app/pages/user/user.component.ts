@@ -19,84 +19,69 @@ export class UserComponent implements OnInit {
   public subjects: Subject[] | undefined;
 
   constructor(private router: Router,
-              private sessionService: SessionService,
-              private userService: UserService,
-              private subjectService: SubjectService,
-              private fb: FormBuilder,) {
+    private sessionService: SessionService,
+    private userService: UserService,
+    private subjectService: SubjectService,
+    private fb: FormBuilder,) {
   }
 
   public onError = false;
 
-  public form:any;
+  public form: any;
 
-  // public form = this.fb.group({
-  //   email: [
-  //     this.user?.email,
-  //     [
-
-  //     ]
-  //   ],
-  //   name: [
-  //     this.user?.name,
-  //     [
-
-  //     ]
-  //   ],
-  //   password: [
-  //     this.user?.password,
-  //     [
-  //       Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})'),
-  //     ]
-  //   ]
-  // });
 
   public ngOnInit(): void {
     this.userService
       // .getById(this.sessionService.sessionInformation!.id.toString())
       .getConnectedUser()
-      .subscribe((user: User) => {this.user = user; console.log(this.user)});
+      .subscribe((user: User) => this.user = user);
+    this.refreshFollowedSubjects();
 
+
+    this.form = this.fb.group({
+      email: [
+        '',
+        [
+          Validators.required,
+        ]
+      ],
+      name: [
+        '',
+        [
+          Validators.required,
+        ]
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(new RegExp("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})")),
+        ]
+      ]
+    });
+  }
+
+  public refreshFollowedSubjects(): void {
     this.subjectService
       .getFollowedSubjects()
       .subscribe((subjects: Subject[]) => this.subjects = subjects);
-
-      this.form = this.fb.group({
-        email: [
-          '',
-          [
-
-          ]
-        ],
-        name: [
-          '',
-          [
-
-          ]
-        ],
-        password: [
-          '',
-          [
-            Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%?=*&]).{8,50})'),
-          ]
-        ]
-      });
   }
 
   public unfollow(id: number) {
     this.subjectService.unfollow(id.toString()).subscribe(() => {
+      this.refreshFollowedSubjects();
     });
   }
 
   public submit(): void {
     const registerRequest = this.form.value as RegisterRequest;
-    console.log(registerRequest)
-    if(this.user) {
-    // this.userService.update(this.sessionService.sessionInformation!.id.toString(), registerRequest).subscribe({
+    if (this.user) {
+      // this.userService.update(this.sessionService.sessionInformation!.id.toString(), registerRequest).subscribe({
       this.userService.update(this.user.id.toString(), registerRequest).subscribe({
         next: (_: void) => this.router.navigate(['/login']),
         error: _ => this.onError = true,
       }
-    );
+      );
     }
 
   }
