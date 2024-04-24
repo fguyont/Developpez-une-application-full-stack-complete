@@ -1,0 +1,117 @@
+.create-title h1 {
+  margin-top: -2rem;
+  margin-inline: auto;
+  text-align: center;
+  margin-left: 5rem;
+}
+
+.create-block .block input {
+  margin-top: 1rem;
+  border-radius: 8px;
+  height: 2rem;
+}
+
+.create-block .block {
+  border-radius: 8px;
+}
+
+.create-block .select-block mat-select {
+  margin-top: 0.3rem;
+}
+
+.create-block .title-block {
+  margin-top: 1rem;
+}
+
+.create-block .text-block input {
+  height: 15rem;
+}
+
+@media screen and (max-width: 767px) {
+  .create-block .title-block input {
+    border-radius: 8px;
+    border: 1px solid #7550EC;
+    height: 2rem;
+    width: 15rem;
+    margin-left: 5rem;
+  }
+
+  .create-block .select-block {
+    border-radius: 8px;
+    border: 1px solid #7550EC;
+    height: 2rem;
+    width: 15.3rem;
+    margin-left: 5rem;
+  }
+
+  .create-block .text-block textarea {
+    width: 20rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    height: 15rem;
+    width: 100%;
+    margin-left: 5rem;
+    border: 1px solid #7550EC;
+  }
+
+  .create-post-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-left: -5rem;
+  }
+
+  .create-block .button-block button {
+    margin-left: 8.5rem;
+    margin-top: 3rem;
+    width: 8rem;
+    background-color: #7550EC;
+    color: white;
+  }
+
+  .create-comment-block {
+    width:100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .create-block .select-block {
+    border-radius: 8px;
+    border: 1px solid #7550EC;
+    height: 2rem;
+    width: 20.3rem;
+    margin-left: 5rem;
+  }
+
+  .create-block .title-block input {
+    border-radius: 8px;
+    border: 1px solid #7550EC;
+    height: 2rem;
+    width: 20rem;
+    margin-left: 5rem;
+  }
+
+  .create-block .text-block textarea {
+    width: 20rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    height: 15rem;
+    width: 20rem;
+    margin-left: 5rem;
+    border: 1px solid #7550EC;
+  }
+
+  .create-post-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .create-block .button-block button {
+    margin-left: 11rem;
+    margin-top: 3rem;
+    width: 8rem;
+    background-color: #7550EC;
+    color: white;
+  }
+}

@@ -15,6 +15,7 @@ import { SubjectService } from 'src/app/services/subject.service';
 export class CreatePostComponent implements OnInit {
 
   public subjects: Subject[] | undefined;
+  public linkToBack='/post';
 
   constructor(private router: Router,
     private sessionService: SessionService,

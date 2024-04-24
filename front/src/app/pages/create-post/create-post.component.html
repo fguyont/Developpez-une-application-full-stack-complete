@@ -1,15 +1,47 @@
-<p>create-post works!</p>
+<app-navbar-header></app-navbar-header>
 
-<div fxLayout="row" fxLayoutAlign="center center">
-  <form  [formGroup]="form" (ngSubmit)="submit()">
-    <select formControlName="subjectId">
-      <option *ngFor="let subject of subjects" [value]="subject.id">
-        {{subject.name}}
-      </option>
-    </select>
-       <input matInput placeholder="Titre" formControlName="title">
-       <textarea matInput formControlName="text" placeholder="Saisir"></textarea>
-      <!-- <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button> -->
-      <button mat-raised-button color="primary" type="submit" >Submit</button>
+<app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
+
+<div class="create-post-form">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="create-title"><h1>Créer un nouvel article</h1></div>
+
+    <div class="create-block">
+      <div class="select-block">
+        <mat-select placeholder="Sélectionner un thème">
+          <mat-option *ngFor="let subject of subjects" [value]="subject.id">
+            {{ subject.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="title-block">
+        <input
+          matInput
+          [type]="'text'"
+          formControlName="title"
+          placeholder="Titre de l'article"
+        />
+      </div>
+
+      <div class="text-block">
+        <textarea
+          matInput
+          formControlName="text"
+          placeholder="Contenu de l'article"
+        ></textarea>
+      </div>
+
+      <div class="button-block">
+        <button
+          mat-raised-button
+          color="#7550EC"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Créér
+        </button>
+      </div>
+    </div>
   </form>
 </div>
