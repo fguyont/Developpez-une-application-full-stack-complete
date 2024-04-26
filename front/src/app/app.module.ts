@@ -18,7 +18,6 @@ import { PostComponent } from './pages/post/post.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { SubjectComponent } from './pages/subject/subject.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NavbarComponent } from './pages/shared/navbar/navbar.component';
 import { UserComponent } from './pages/user/user.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component'
 import { MatSelectModule } from '@angular/material/select';
@@ -34,7 +33,7 @@ import { NavbarHeaderComponent } from './pages/shared/navbar-header/navbar-heade
 import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, NavbarComponent, UserComponent, CreatePostComponent, PostDetailComponent, LoginNavbarComponent, BackArrowLinkComponent, CommonNavbarComponent, MobileNavbarComponent, NavbarHeaderComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, PostComponent, SubjectComponent, UserComponent, CreatePostComponent, PostDetailComponent, LoginNavbarComponent, BackArrowLinkComponent, CommonNavbarComponent, MobileNavbarComponent, NavbarHeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
