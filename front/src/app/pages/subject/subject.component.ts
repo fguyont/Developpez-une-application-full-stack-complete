@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Subject } from 'src/app/models/subject';
 import { User } from 'src/app/models/user';
 import { SubjectService } from 'src/app/services/subject.service';
@@ -9,12 +10,15 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './subject.component.html',
   styleUrls: ['./subject.component.scss']
 })
-export class SubjectComponent implements OnInit {
+export class SubjectComponent implements OnInit, OnDestroy {
 
   subjects: Subject[] | undefined;
-  public user: User | undefined;
+  user: User | undefined;
+  getUserService$: Subscription | undefined;
+  getAllService$: Subscription | undefined;
+  followService$: Subscription | undefined;
 
-  constructor(private subjectService: SubjectService,private userService: UserService,) { }
+  constructor(private subjectService: SubjectService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -22,30 +26,41 @@ export class SubjectComponent implements OnInit {
   }
 
   public getUser() {
-    this.userService
-      // .getById(this.sessionService.sessionInformation!.id.toString())
-      .getConnectedUser()
-      .subscribe((user: User) => this.user = user );
+    this.getUserService$ = this.userService
+      .getMe()
+      .subscribe((user: User) => this.user = user);
   }
 
   public getAll(): void {
-    this.subjectService.getAll().subscribe((subjects) => {
+    this.getAllService$ = this.subjectService.getAll().subscribe((subjects) => {
       this.subjects = subjects;
     })
   }
 
   public follow(id: number) {
-    this.subjectService.follow(id.toString()).subscribe(() => {
+    this.followService$ = this.subjectService.follow(id.toString()).subscribe(() => {
       this.getUser();
       this.getAll();
     });
   }
 
-  public isAlreadyFollowed(subjectId: number): boolean{
+  public isAlreadyFollowed(subjectId: number): boolean {
     if (this.user) {
-    return this.user?.subjectIds.includes(subjectId);
+      return this.user?.subjectIds.includes(subjectId);
     }
     return false;
+  }
+
+  public ngOnDestroy(): void {
+    if (this.getUserService$) {
+      this.getUserService$.unsubscribe();
+    }
+    if (this.getAllService$) {
+      this.getAllService$.unsubscribe();
+    }
+    if (this.followService$) {
+      this.followService$.unsubscribe();
+    }
   }
 
 }

@@ -1,20 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { RegisterRequest } from '../../models/register-request';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
 
-  public onError = false;
-  public linkToBack='/';
+  onError = false;
+  linkToBack = '/';
+  registerService$: Subscription | undefined;
 
-  public form = this.fb.group({
+  constructor(private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router) {
+  }
+
+  form = this.fb.group({
     email: [
       '',
       [
@@ -39,18 +46,19 @@ export class RegisterComponent {
     ]
   });
 
-  constructor(private authService: AuthService,
-              private fb: FormBuilder,
-              private router: Router) {
+  public submit(): void {
+    let registerRequest = this.form.value as RegisterRequest;
+    this.registerService$ = this.authService.register(registerRequest).subscribe({
+      next: (_: void) => this.router.navigate(['/login']),
+      error: _ => this.onError = true,
+    }
+    );
   }
 
-  public submit(): void {
-    const registerRequest = this.form.value as RegisterRequest;
-    this.authService.register(registerRequest).subscribe({
-        next: (_: void) => this.router.navigate(['/login']),
-        error: _ => this.onError = true,
-      }
-    );
+  public ngOnDestroy(): void {
+    if (this.registerService$) {
+      this.registerService$.unsubscribe();
+    }
   }
 
 }
