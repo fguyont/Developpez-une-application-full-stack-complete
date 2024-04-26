@@ -42,8 +42,13 @@ public class AuthController {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Action to log in the user
+     * @param loginRequest: contains email and password to insert
+     * @return ResponseEntity<JwtResponse>: contains JWT token, id and username
+     */
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
@@ -57,9 +62,13 @@ public class AuthController {
                 userDetails.getUsername()));
     }
 
-
+    /**
+     * Action to register a user
+     * @param signUpRequest: contains username, email and password to insert
+     * @return ResponseEntity<MessageResponse>: to indicate if the registration is successful or not
+     */
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+    public ResponseEntity<MessageResponse> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
