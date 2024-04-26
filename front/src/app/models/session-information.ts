@@ -1,5 +1,5 @@
 export interface SessionInformation {
-    token: string;
-    id: number;
-    username: string;
+  token: string;
+  id: number;
+  username: string;
 }
