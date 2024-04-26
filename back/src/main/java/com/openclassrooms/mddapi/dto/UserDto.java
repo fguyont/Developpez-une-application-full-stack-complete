@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,12 +18,12 @@ import java.util.List;
 public class UserDto {
     private Long id;
 
-    @NonNull
+    @NotNull
     @Size(max = 50)
     @Email
     private String email;
 
-    @NotBlank
+    @NotNull
     @Size(max = 50)
     private String name;
 

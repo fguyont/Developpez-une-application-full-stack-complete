@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -15,13 +15,13 @@ public class PostDto {
 
     private Long id;
 
-    @NotBlank
+    @NotNull
     @Size(max = 50)
     private String title;
 
     private LocalDateTime date;
 
-    @NotBlank
+    @NotNull
     @Size(max = 5000)
     private String text;
 

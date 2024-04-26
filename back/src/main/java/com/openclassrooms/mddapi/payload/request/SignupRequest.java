@@ -6,16 +6,16 @@ import lombok.Data;
 
 @Data
 public class SignupRequest {
-    @NotBlank
+    @NotNull
     @Size(max = 50)
     @Email
     private String email;
 
-    @NotBlank
+    @NotNull
     @Size(min = 1, max = 50)
     private String name;
 
-    @NotBlank
+    @NotNull
     @Size(min = 8, max = 40)
     private String password;
 }
