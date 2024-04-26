@@ -1,14 +1,14 @@
 package com.openclassrooms.mddapi.payload.request;
 
-import javax.validation.constraints.NotBlank;
-
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 public class LoginRequest {
-    @NotBlank
+    @NotNull
     private String email;
 
-    @NotBlank
+    @NotNull
     private String password;
 }
