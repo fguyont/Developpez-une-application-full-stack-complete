@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { RegisterRequest } from '../models/register-request';
-import { SessionInformation } from '../models/session-information';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +13,15 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getById(id: string): Observable<User> {
-    return this.httpClient.get<User>(`${this.pathService}/${id}`);
+  public getMe(): Observable<User> {
+    return this.httpClient.get<User>(`${this.pathService}`);
   }
 
-  public update(id:string, registerRequest: RegisterRequest): Observable<void> {
+  public update(id: string, registerRequest: RegisterRequest): Observable<void> {
     return this.httpClient.put<void>(`${this.pathService}/${id}`, registerRequest);
   }
 
-  public getConnectedUser():Observable<User> {
-    return this.httpClient.get<User>(`${this.pathService}/me`)
+  public updates(registerRequest: RegisterRequest): Observable<User> {
+    return this.httpClient.put<User>(`${this.pathService}`, registerRequest);
   }
 }
