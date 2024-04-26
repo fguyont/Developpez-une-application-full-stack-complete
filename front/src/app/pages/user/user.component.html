@@ -1,60 +1,62 @@
 <app-navbar-header></app-navbar-header>
 
-<div class="edit-form">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <div><h1>Profil d'utilisateur</h1></div>
+<div class="edit-block">
+  <div class="edit-form">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div><h1>Profil d'utilisateur</h1></div>
 
-    <div class="block">
-      <div><label>Nom d'utilisateur</label></div>
-      <div>
-        <input
-          matInput
-          [type]="'text'"
-          formControlName="name"
-          value="{{ user?.name }}"
-        />
+      <div class="block">
+        <div><label>Nom d'utilisateur</label></div>
+        <div>
+          <input
+            matInput
+            [type]="'text'"
+            formControlName="name"
+            value="{{ user?.name }}"
+          />
+        </div>
       </div>
-    </div>
 
-    <div class="block">
-      <div><label>E-mail</label></div>
-      <div>
-        <input
-          matInput
-          [type]="'text'"
-          formControlName="email"
-          value="{{ user?.email }}"
-        />
+      <div class="block">
+        <div><label>E-mail</label></div>
+        <div>
+          <input
+            matInput
+            [type]="'text'"
+            formControlName="email"
+            value="{{ user?.email }}"
+          />
+        </div>
       </div>
-    </div>
 
-    <div class="block">
-      <div><label>Mot de passe</label></div>
-      <div>
-        <input matInput [type]="'password'" formControlName="password" />
+      <div class="block">
+        <div><label>Mot de passe</label></div>
+        <div>
+          <input matInput [type]="'password'" formControlName="password" />
+        </div>
       </div>
-    </div>
 
-    <div class="button-block">
-      <div class="save-button">
-        <button
-          mat-raised-button
-          color="#7550EC"
-          type="submit"
-          [disabled]="form.invalid"
-        >
-          Sauvegarder
-        </button>
+      <div class="button-block">
+        <div class="save-button">
+          <button
+            mat-raised-button
+            color="#7550EC"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            Sauvegarder
+          </button>
+        </div>
       </div>
-      <div class="logout-button">
-        <button>Se déconnecter</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
+
+  <div class="logout-button">
+    <button (click)="logOut()">Se déconnecter</button>
+  </div>
 </div>
 
-<div class="line">
-</div>
+<div class="line"></div>
 
 <div class="user-sub"><h1>Abonnements</h1></div>
 

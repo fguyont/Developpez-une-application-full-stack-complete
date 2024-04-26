@@ -110,11 +110,17 @@ button {
   vertical-align: middle;
 }
 
-.logout-button button {
+.logout-button {
+  text-align: center;
+}
+
+.logout-button button{
   background-color: white;
   color: red;
   border: none;
   font-weight: bold;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .line {
@@ -127,4 +133,7 @@ button {
 .user-sub h1 {
   text-align: center;
   margin-top: 1rem;;
+}
+
+.edit-block {
 }
