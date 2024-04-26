@@ -1,5 +1,6 @@
 package com.openclassrooms.mddapi.controller;
 
+import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.mapper.UserMapper;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.payload.request.SignupRequest;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -18,10 +20,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") String id) {
+    /**
+     * Action to get the connected user
+     * @return ResponseEntity<UserDto>: the connected user
+     */
+    @GetMapping()
+    public ResponseEntity<UserDto> getMe() {
         try {
-            User user = this.userService.getById(Long.valueOf(id));
+            User user = this.userService.getMe();
 
             if (user == null) {
                 return ResponseEntity.notFound().build();
@@ -33,10 +39,14 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") String id, @Valid @RequestBody SignupRequest signupRequest) {
+    /**
+     * Action to update the connected user
+     * @return ResponseEntity<UserDto>: the updated user
+     */
+    @PutMapping()
+    public ResponseEntity<UserDto> update(@Valid @RequestBody SignupRequest signupRequest) {
         try {
-            User user = this.userService.update(userService.getById(Long.parseLong(id)), signupRequest.getEmail(), signupRequest.getName(), signupRequest.getPassword());
+            User user = this.userService.update(signupRequest.getEmail(), signupRequest.getName(), signupRequest.getPassword());
 
             return ResponseEntity.ok().body(this.userMapper.toDto(user));
         } catch (NumberFormatException e) {

@@ -24,15 +24,41 @@ public class SubjectService {
     @Autowired
     private UserRepository userRepository;
 
-    //TODO: To sort the subjects by name ascending
+    /**
+     * Service to get all subjects
+     * @return List<Subject>: all subjects
+     */
     public List<Subject> getAll() {
         return subjectRepository.findAll();
     }
 
+    /**
+     * Service to get all subjects followed by the connected user
+     * @return List<Subject>: all subjects followed by the connected user
+     */
+    public List<Subject> getFollowedSubjects() {
+        Optional<User> user = this.userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (user.isEmpty()) {
+            throw new NotFoundException();
+        }
+
+        return user.get().getSubjects();
+    }
+
+    /**
+     * Service to get the subject by id
+     * @param id: subject id
+     * @return Subject: the subject
+     */
     public Subject getById(Long id) {
         return this.subjectRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Service to make the user follow the subject
+     * @param id: subject id
+     */
     public void follow(Long id) {
         Subject subject = this.subjectRepository.findById(id).orElse(null);
         Optional<User> user = this.userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -57,6 +83,10 @@ public class SubjectService {
         this.subjectRepository.save(subject);
     }
 
+    /**
+     * Service to make the user unfollow the subject
+     * @param id: subject id
+     */
     public void unfollow(Long id) {
         Subject subject = this.subjectRepository.findById(id).orElse(null);
         Optional<User> user = this.userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());

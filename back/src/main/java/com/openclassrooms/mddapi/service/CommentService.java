@@ -25,10 +25,11 @@ public class CommentService {
     @Autowired
     UserRepository userRepository;
 
-    public List<Comment> getAll() {
-        return commentRepository.findAll();
-    }
-
+    /**
+     * Service to get all comments by post
+     * @param postId: post id
+     * @return <List<Comment>: all the comments for the post
+     */
     public List<Comment> getByPostId(Long postId) {
         Optional<Post> post = postRepository.findById(postId);
         List<Comment> comments = new ArrayList<>();
@@ -37,11 +38,14 @@ public class CommentService {
             comments = commentRepository.findByPost(post);
         }
 
-        //TODO: To sort the comments by date descending
-
         return comments;
     }
 
+    /**
+     * Service to post a comment
+     * @param comment: contains the message to post
+     * @return Comment : the comment posted
+     */
     public Comment create(Comment comment) {
         Optional<User> user = this.userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 

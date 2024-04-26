@@ -1,5 +1,6 @@
 package com.openclassrooms.mddapi.controller;
 
+import com.openclassrooms.mddapi.dto.CommentDto;
 import com.openclassrooms.mddapi.mapper.CommentMapper;
 import com.openclassrooms.mddapi.model.Comment;
 import com.openclassrooms.mddapi.payload.request.CreateCommentRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class CommentController {
 
@@ -24,21 +26,25 @@ public class CommentController {
     @Autowired
     CommentMapper commentMapper;
 
-    // Currently not used in the application but can be useful for tests and debug
-    @GetMapping("/api/comment")
-    public ResponseEntity<?> getAll() {
-        List<Comment> comments = this.commentService.getAll();
-        return ResponseEntity.ok().body(this.commentMapper.toDto(comments));
-    }
-
+    /**
+     * Action to get all comments by post
+     * @param postId: post id
+     * @return ResponseEntity<List<CommentDto>: all the comments for the post
+     */
     @GetMapping("api/post/{postId}/comment")
-    public ResponseEntity<?> getByPostId(@PathVariable("postId") String postId) {
+    public ResponseEntity<List<CommentDto>> getByPostId(@PathVariable("postId") String postId) {
         List<Comment> comments = this.commentService.getByPostId(Long.valueOf(postId));
         return ResponseEntity.ok().body(this.commentMapper.toDto(comments));
     }
 
+    /**
+     * Action to post a comment
+     * @param postId: post id
+     * @param createCommentRequest: contains the message to post
+     * @return ResponseEntity<CommentDto>: data on the comment posted
+     */
     @PostMapping("api/post/{postId}/comment")
-    public ResponseEntity<?> create(@PathVariable("postId") String postId, @Valid @RequestBody CreateCommentRequest createCommentRequest) {
+    public ResponseEntity<CommentDto> create(@PathVariable("postId") String postId, @Valid @RequestBody CreateCommentRequest createCommentRequest) {
         try {
             Comment comment = this.commentService.create(new Comment(createCommentRequest.getText(), postService.getById(Long.valueOf(postId))));
 
