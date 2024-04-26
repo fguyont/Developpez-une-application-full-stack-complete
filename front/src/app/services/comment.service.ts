@@ -18,6 +18,6 @@ export class CommentService {
   }
 
   public create(postId: string, createCommentRequest: CreateCommentRequest): Observable<Comment> {
-    return this.httpClient.post<Comment>(`${this.pathService}/${postId}/comment`, {...createCommentRequest});
+    return this.httpClient.post<Comment>(`${this.pathService}/${postId}/comment`, { ...createCommentRequest });
   }
 }
