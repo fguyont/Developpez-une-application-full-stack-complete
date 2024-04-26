@@ -21,18 +21,28 @@ public class PostService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Post> getAll() {
-        return postRepository.findAll();
-    }
-
+    /**
+     * Service to get a post by id
+     * @param id: post id
+     * @return Post: the post
+     */
     public Post getById(Long id) {
         return this.postRepository.findById(id).orElse(null);
     }
 
-    public List<Post> getBySubject (Subject subject) {
+    /**
+     * Service to get posts by subject
+     * @param subject: the subject
+     * @return List<Post>: all the posts by subject
+     */
+    private List<Post> getBySubject (Subject subject) {
         return this.postRepository.findBySubject(subject);
     }
 
+    /**
+     * Service to get feed posts
+     * @return List<Post>: all the feed posts
+     */
     public List<Post> getFeedPosts() {
         Optional<User> user = this.userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Post> posts = new ArrayList<>();
@@ -43,10 +53,14 @@ public class PostService {
             }
         }
 
-        // TODO: It is possible to sort the posts by date descending
         return posts;
     }
 
+    /**
+     * Service to get create a post
+     * @param post: the post to create
+     * @return post: the post created
+     */
     public Post create (Post post) {
         Optional<User> user = this.userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
