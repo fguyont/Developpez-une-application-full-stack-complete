@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionInformation } from '../../models/session-information';
 import { SessionService } from '../../services/session.service';
 import { LoginRequest } from '../../models/login-request';
 import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  public hide = true;
-  public onError = false;
-  public linkToBack='/';
 
-  public form = this.fb.group({
+export class LoginComponent implements OnDestroy {
+  hide = true;
+  onError = false;
+  linkToBack = '/';
+
+  loginService$: Subscription | undefined;
+
+  constructor(private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private sessionService: SessionService) {
+  }
+
+  form = this.fb.group({
     email: [
       '',
       [
@@ -33,15 +43,9 @@ export class LoginComponent {
     ]
   });
 
-  constructor(private authService: AuthService,
-              private fb: FormBuilder,
-              private router: Router,
-              private sessionService: SessionService) {
-  }
-
   public submit(): void {
-    const loginRequest = this.form.value as LoginRequest;
-    this.authService.login(loginRequest).subscribe({
+    let loginRequest = this.form.value as LoginRequest;
+    this.loginService$ = this.authService.login(loginRequest).subscribe({
       next: (response: SessionInformation) => {
         this.sessionService.logIn(response);
         this.router.navigate(['/post']);
@@ -49,4 +53,11 @@ export class LoginComponent {
       error: () => this.onError = true,
     });
   }
+
+  public ngOnDestroy(): void {
+    if (this.loginService$) {
+      this.loginService$.unsubscribe();
+    }
+  }
+
 }

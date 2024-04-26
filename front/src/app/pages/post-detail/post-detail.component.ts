@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PostService } from '../../services/post.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,24 +7,30 @@ import { CommentService } from 'src/app/services/comment.service';
 import { CreateCommentRequest } from 'src/app/models/create-comment-request';
 import { Comment } from 'src/app/models/comment';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']
 })
-export class PostDetailComponent implements OnInit {
 
-  public post: Post | undefined;
+export class PostDetailComponent implements OnInit, OnDestroy {
 
-  public id!: string | null;
+  post: Post | undefined;
+  id!: string | null;
+  comments!: Comment[];
+  linkToBack: string = '/post';
+  faPaperPlaneIcon = faPaperPlane;
+  getPostService$: Subscription | undefined;
+  createCommentService$: Subscription | undefined;
+  getAllCommentsService$: Subscription | undefined;
 
-  public comments!: Comment[];
-
-  public linkToBack: string = '/post';
-
-  public faPaperPlaneIcon = faPaperPlane;
+  constructor(private postService: PostService,
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    private commentService: CommentService) {
+  }
 
   public form = this.fb.group({
     text: [
@@ -35,16 +41,10 @@ export class PostDetailComponent implements OnInit {
     ]
   });
 
-  constructor(private postService: PostService,
-    private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder,
-    private commentService: CommentService) {
-  }
-
   public ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.id) {
-      this.postService
+      this.getPostService$ = this.postService
         .getById(this.id)
         .subscribe((post: Post) => this.post = post);
       this.refreshComments();
@@ -53,23 +53,32 @@ export class PostDetailComponent implements OnInit {
 
   public submit() {
     if (this.id) {
-      this.commentService.create(this.id, { text: this.form.value.text } as CreateCommentRequest).subscribe(() => {
-        this.refreshComments()
+      let createCommentRequest = this.form.value as CreateCommentRequest;
+      this.createCommentService$ = this.commentService.create(this.id, createCommentRequest).subscribe(() => {
+        this.refreshComments();
       })
     }
   }
-
 
   public refreshComments() {
     if (this.id) {
-      this.commentService.getAllByPostId(this.id).subscribe((comments) => {
-        this.comments = comments
+      this.getAllCommentsService$ = this.commentService.getAllByPostId(this.id).subscribe((comments) => {
+        this.comments = comments;
+        this.comments?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       })
     }
-
   }
-  public back() {
-    window.history.back();
+
+  public ngOnDestroy(): void {
+    if (this.getPostService$) {
+      this.getPostService$.unsubscribe();
+    }
+    if (this.createCommentService$) {
+      this.createCommentService$.unsubscribe();
+    }
+    if (this.getAllCommentsService$) {
+      this.getAllCommentsService$.unsubscribe();
+    }
   }
 
 }
