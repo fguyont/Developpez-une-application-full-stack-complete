@@ -1,33 +1,120 @@
-.card mat-card {
-  min-height: 15rem;
-  border-radius: 8px;
+@media (min-width: 768px) {
+
+  .subject {
+    display: inline-block;
+    margin-left: 50px;
+  }
+
+  .arrow-in-title {
+    display: none;
+  }
+
+  .arrow-post-block {
+    display: inline-flex;
+  }
+
+  .comment-title {
+    margin-left: 85px;
+    margin-top: 15px;
+  }
+
+  .comment-user-mobile {
+    display: none;
+  }
+
+  .comment-area {
+    margin-left: 100px;
+  }
+
+  .comment-textarea {
+    display: inline-block;
+  }
+
+  .comment-send-button {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-left: 30px;
+  }
+
+  .comment-textarea {
+    width: 79%;
+  }
+
+  .comment-textarea textarea {
+    width: 99%;
+  }
+
+  mat-card {
+    margin-right: 200px;
+  }
+
 }
 
-.date,
-.author,
-.subject {
+@media (max-width: 767px) {
+
+  .subject {
+    margin-left: 0;
+  }
+
+  .arrow-block {
+    display: none;
+  }
+
+  mat-card-title {
+    display: flex;
+  }
+
+  .arrow-in-title {
+    margin-top: -14px;
+    margin-left: -15px;
+  }
+
+  .comment-title {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+
+  .comment-block {
+    margin-left: 15px;
+  }
+
+  .comment-user {
+    display: none;
+  }
+
+  .comment-user-mobile p {
+    float: right;
+  }
+
+  .comment-textarea {
+    width: 98%;
+    margin-left: 15px;
+  }
+
+  .comment-textarea textarea {
+    width: 98%;
+  }
+
+  .comment-send-button {
+    position: absolute;
+    top: 55%;
+    left: 80%;
+  }
+
+}
+
+.post {
+  margin-top: 10px;
+}
+
+.date {
   display: inline-block;
 }
 
 .author {
-  margin-right: 1rem;
-  margin-left: 5rem;
-}
-
-.date-author-block {
-  margin-top: 1rem;
-}
-
-.subject {
-  margin-left: 5rem;
-}
-
-.arrow-card-block {
-  display: flex;
-}
-
-.card {
-  margin-top: 0.5rem;
+  display: inline-block;
+  margin-left: 50px;
 }
 
 .line {
@@ -37,210 +124,36 @@
   margin: auto;
 }
 
-.create-comment-block form {
-  display: flex;
+.comment-textarea textarea {
+  border-radius: 8px;
+  min-height: 150px;
+  margin-top: 30px;
 }
 
-.create-comment-block form button {
-  margin-top: 3.5rem;
-  margin-left: 0.5rem;
-  color: #7550EC;
-  background-color: white;
+.comment mat-card {
+  min-height: 100px;
+  background-color: lightgray;
 }
 
-.create-comment-block form button fa-icon {
-  font-size: x-large;
+.comment-block {
+  margin-top: 30px;
 }
 
 .comment-area {
-  margin-left: 15rem;
+  margin-right: 15px;
+  margin-top: 30px;
 }
 
-@media screen and (min-width: 361px) and (max-width: 767px) {
-  .comment-title {
-    margin-left: 4rem;
-    margin-top: 1rem;
-  }
-
-  .comment-block {
-    margin-top: 2rem;
-  }
-
-  .comment-textarea textarea {
-    border-radius: 8px;
-    min-height: 5rem;
-    width: 100%;
-  }
-
-  .comment-user p {
-    display: none;
-  }
-
-  .comment-user-mobile p {
-    margin-right: 1rem;
-    margin-top: 0.1rem;
-    float: right;
-  }
-
-  .comment-textarea {
-    margin-left: 1rem;
-    margin-top: 2rem;
-    min-width: 18rem;
-  }
-
-  .comment-block mat-card {
-    background-color: lightgray;
-    min-width: 1rem;
-    min-height: 5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .comment-textarea mat-card {
-    min-width: 1rem;
-    min-height: 5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .comment-area {
-    margin-left: 0;
-  }
-
-  .create-comment-block form button {
-    margin-top: 3.5rem;
-    margin-left: 0.5rem;
-    color: #7550EC;
-    background-color: white;
-  }
-
+fa-icon {
+  font-size: 40px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 884px) {
-  .comment-title {
-    margin-left: 5.5rem;
-    margin-top: 1rem;
-  }
-
-  .comment-block {
-    display: flex;
-    margin-left: -9.5rem;
-    margin-top: 1rem;
-  }
-
-  .comment-textarea textarea {
-    min-width: 26.5rem;
-    border-radius: 8px;
-    min-height: 5rem;
-  }
-
-
-  .comment-user p {
-    min-width: 8rem;
-  }
-
-  .comment-user-mobile p {
-    display: none;
-  }
-
-  .comment-textarea {
-    margin-left: -1.5rem;
-    margin-top: 2rem;
-  }
-
-  .comment-block mat-card {
-    background-color: lightgray;
-    min-width: 25rem;
-    min-height: 5rem;
-  }
+.comment-send-button button{
+  width: 40px;
+  height: 40px;
+  color: #7550EC;
 }
 
-@media screen and (max-width: 360px) {
-  .comment-title {
-    margin-left: 4rem;
-    margin-top: 1rem;
-  }
-
-  .comment-block {
-    margin-top: 2rem;
-  }
-
-  .comment-textarea textarea {
-    border-radius: 8px;
-    min-height: 5rem;
-    width: 100%;
-  }
-
-  .comment-user p {
-    display: none;
-  }
-
-  .comment-user-mobile p {
-    margin-right: 1rem;
-    margin-top: 0.1rem;
-    float: right;
-  }
-
-  .comment-textarea {
-    margin-left: 1rem;
-    margin-top: 2rem;
-    min-width: 15rem;
-  }
-
-  .comment-block mat-card {
-    background-color: lightgray;
-    min-width: 1rem;
-    min-height: 5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .comment-textarea mat-card {
-    min-width: 1rem;
-    min-height: 5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .comment-area {
-    margin-left: 0;
-  }
-}
-
-@media screen and (min-width: 885px) {
-  .comment-title {
-    margin-left: 5.5rem;
-    margin-top: 1rem;
-  }
-
-  .comment-block {
-    display: flex;
-    margin-left: -9.5rem;
-    margin-top: 1rem;
-  }
-
-  .comment-textarea textarea {
-    min-width: 58rem;
-    border-radius: 8px;
-    min-height: 5rem;
-  }
-
-  .comment-user p {
-    min-width: 8rem;
-  }
-
-  .comment-user-mobile p {
-    display: none;
-  }
-
-  .comment-textarea {
-    margin-left: -1.5rem;
-    margin-top: 2rem;
-  }
-
-  .comment-block mat-card {
-    background-color: lightgray;
-    min-width: 56.5rem;
-    min-height: 5rem;
-  }
+.create-comment-block {
+  position: relative;
 }

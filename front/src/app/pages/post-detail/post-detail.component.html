@@ -1,14 +1,18 @@
 <app-navbar-header></app-navbar-header>
 
-<div class="arrow-card-block">
-  <div>
+<div class="arrow-post-block">
+  <div class="arrow-block">
     <app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
   </div>
-  <div class="card">
+
+  <div class="post">
     <mat-card class="mat-elevation-z0">
-      <mat-card-title [routerLink]="['/post', post?.id]">{{
-        post?.title
-      }}</mat-card-title>
+      <mat-card-title [routerLink]="['/post', post?.id]">
+        <div class="arrow-in-title">
+          <app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
+        </div>
+        {{ post?.title }}</mat-card-title
+      >
       <div class="date-author-block">
         <mat-card-subtitle>
           <div class="date">
@@ -60,7 +64,6 @@
       <div class="comment-send-button">
         <button
           mat-raised-button
-          color="primary"
           class="mat-elevation-z0"
           type="submit"
         >
