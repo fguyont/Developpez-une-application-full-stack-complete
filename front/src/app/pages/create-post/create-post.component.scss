@@ -1,117 +1,80 @@
-.create-title h1 {
-  margin-top: -2rem;
-  margin-inline: auto;
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .create-post-form {
+    min-height: 50vh;
+  }
+}
+
+.create-post-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 15px
+}
+
+.title-block {
+  margin-top: 20px;
+}
+
+.text-block {
+  margin-top: 20px;
+}
+
+.button-block {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  border-radius: 8px;
+  width: 280px;
+  height: 35px;
+  font-size: large;
+  border: 2px solid #7550EC;
+}
+
+textarea {
+  width: 280px;
+  border-radius: 8px;
+  height: 250px;
+  border: 2px solid #7550EC;
+  font-size: large;
+}
+
+.select-block {
+  border-radius: 8px;
+  border: 2px solid #7550EC;
+  height: 35px;
+  width: 284px;
+  margin-top: 40px;
+}
+
+mat-select {
+  margin-left: 1px;
+  font-size: medium;
+  margin-top: 2px;
+}
+
+h1 {
   text-align: center;
-  margin-left: 5rem;
+  font-weight: bold;
 }
 
-.create-block .block input {
-  margin-top: 1rem;
+button {
   border-radius: 8px;
-  height: 2rem;
+  height: 35px;
+  width: 140px;
 }
 
-.create-block .block {
-  border-radius: 8px;
-}
-
-.create-block .select-block mat-select {
-  margin-top: 0.3rem;
-}
-
-.create-block .title-block {
-  margin-top: 1rem;
-}
-
-.create-block .text-block input {
-  height: 15rem;
-}
-
-@media screen and (max-width: 767px) {
-  .create-block .title-block input {
-    border-radius: 8px;
-    border: 1px solid #7550EC;
-    height: 2rem;
-    width: 15rem;
-    margin-left: 5rem;
-  }
-
-  .create-block .select-block {
-    border-radius: 8px;
-    border: 1px solid #7550EC;
-    height: 2rem;
-    width: 15.3rem;
-    margin-left: 5rem;
-  }
-
-  .create-block .text-block textarea {
-    width: 20rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    height: 15rem;
-    width: 100%;
-    margin-left: 5rem;
-    border: 1px solid #7550EC;
-  }
-
-  .create-post-form {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    margin-left: -5rem;
-  }
-
-  .create-block .button-block button {
-    margin-left: 8.5rem;
-    margin-top: 3rem;
-    width: 8rem;
-    background-color: #7550EC;
-    color: white;
-  }
-
-  .create-comment-block {
-    width:100%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-
-  .create-block .select-block {
-    border-radius: 8px;
-    border: 1px solid #7550EC;
-    height: 2rem;
-    width: 20.3rem;
-    margin-left: 5rem;
-  }
-
-  .create-block .title-block input {
-    border-radius: 8px;
-    border: 1px solid #7550EC;
-    height: 2rem;
-    width: 20rem;
-    margin-left: 5rem;
-  }
-
-  .create-block .text-block textarea {
-    width: 20rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    height: 15rem;
-    width: 20rem;
-    margin-left: 5rem;
-    border: 1px solid #7550EC;
-  }
-
-  .create-post-form {
-    display: flex;
-    justify-content: center;
-  }
-
-  .create-block .button-block button {
-    margin-left: 11rem;
-    margin-top: 3rem;
-    width: 8rem;
-    background-color: #7550EC;
-    color: white;
-  }
-}
