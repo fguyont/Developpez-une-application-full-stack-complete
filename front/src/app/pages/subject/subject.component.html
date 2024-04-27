@@ -1,17 +1,18 @@
 <app-navbar-header></app-navbar-header>
 
-<div class="subject-wrapper">
-  <div *ngFor="let subject of subjects">
-    <div class="subject-card">
+<div class="subject-cards">
+  <div class="subject" *ngFor="let subject of subjects">
+    <div>
       <mat-card>
-        <mat-card-title> {{ subject.name }}</mat-card-title>
+        <mat-card-title>{{ subject.name }}</mat-card-title>
         <mat-card-content>
           <p>{{ subject.description }}</p>
         </mat-card-content>
         <div class="subject-follow-button">
           <button
-            mat-button
+            mat-raised-button
             type="submit"
+            color="primary"
             [disabled]="isAlreadyFollowed(subject.id)"
             (click)="follow(subject.id)"
           >
