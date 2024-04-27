@@ -1,14 +1,17 @@
 <app-navbar-header></app-navbar-header>
 
-<app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
-
-<div class="create-post-form">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="create-title"><h1>Créer un nouvel article</h1></div>
-
-    <div class="create-block">
+<div class="cards">
+  <div class="card">
+    <app-back-arrow-link [linkToBack]="linkToBack"></app-back-arrow-link>
+  </div>
+  <div class="create-post-form">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="create-title"><h1>Créer un nouvel article</h1></div>
       <div class="select-block">
-        <mat-select placeholder="Sélectionner un thème" formControlName="subjectId">
+        <mat-select
+          placeholder="Sélectionner un thème"
+          formControlName="subjectId"
+        >
           <mat-option *ngFor="let subject of subjects" [value]="subject.id">
             {{ subject.name }}
           </mat-option>
@@ -35,13 +38,13 @@
       <div class="button-block">
         <button
           mat-raised-button
-          color="#7550EC"
+          color="primary"
           type="submit"
           [disabled]="form.invalid"
         >
-          Créér
+          Créer
         </button>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
