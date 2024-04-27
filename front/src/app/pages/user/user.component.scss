@@ -1,25 +1,74 @@
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+
+  .user-sub-title {
+     margin-top: 20px;
+  }
+
+  .subject-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+
+  .user-sub-title {
+     display: none;
+  }
+
+  .subject-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.edit-block {
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 .edit-form {
   display: flex;
   justify-content: center;
 }
 
-.edit-form div h1 {
-  margin-inline: auto;
-  text-align: center;
-}
-
-.edit-form div {
-  margin: auto;
-}
-
-.button-block div {
+.logout-button {
   display: flex;
   justify-content: center;
-  margin: 0.5rem;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.email-block {
+  margin-top: 20px;
+}
+
+.password-block {
+  margin-top: 20px;
+}
+
+.button-block {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .button-block button {
   border-radius: 8px;
+  height: 40px;
+  width: 150px;
+  font-size: medium;
 }
 
 input {
@@ -29,89 +78,8 @@ input {
   font-size: large;
 }
 
-img {
-  width: 15rem;
-}
-
-button {
-  background-color: #7550EC;
-  color: white;
-  width: 10rem;
-}
-
-@media screen and (min-width: 768px) {
-  .subject-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-columns: 50%;
-    grid-row-gap: 2rem;
-    grid-column-gap: 4rem;
-    padding: 1rem;
-    margin-left: 0.1rem;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .subject-follow-button {
-    position: absolute;
-    bottom: 1rem;
-    left: 35%;
-  }
-
-  .edit-form .block {
-    margin: 1.8rem;
-  }
-
-  mat-card {
-    background-color: lightgray;
-    min-height: 15rem;
-    border-radius: 8px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .subject-wrapper {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-columns: 50%;
-    grid-gap: 1rem;
-    padding: 1rem;
-    margin-left: 0.1rem;
-    margin-right: 0.5rem;
-  }
-
-  .subject-follow-button {
-    position: absolute;
-    bottom: 1rem;
-    left: 25%;
-    display: table;
-  }
-
-  .user-sub {
-    display: none;
-  }
-
-  mat-card {
-    background-color: lightgray;
-    min-height: 8rem;
-    border-radius: 8px;
-  }
-}
-
-.subject-card {
-  position: relative;
-}
-
-.edit-form h1 {
-  margin-top: 1rem;
-}
-
-.button-block {
-  vertical-align: middle;
-}
-
 .logout-button {
-  text-align: center;
+  margin-top: 10px;
 }
 
 .logout-button button{
@@ -128,12 +96,32 @@ button {
   height: 1px;
   background: black;
   margin: auto;
+  margin-top: 10px;
 }
 
-.user-sub h1 {
-  text-align: center;
-  margin-top: 1rem;;
+.subject-cards {
+  max-width: 1200px;
+  min-height: 100px;
+  display: grid;
+  gap: 1rem;
+  margin: 15px auto;
 }
 
-.edit-block {
+mat-card {
+  background-color: lightgray;
+  min-height: 250px;
+  border-radius: 8px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.subject-unfollow-button button {
+  border-radius: 8px;
+  height: 40px;
+  width: 150px;
+  font-size: medium;
+  position: absolute;
+  bottom: 0;
+  left: 34%;
+  margin-bottom: 15px;
 }

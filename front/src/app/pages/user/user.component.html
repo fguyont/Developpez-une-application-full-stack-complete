@@ -1,75 +1,77 @@
 <app-navbar-header></app-navbar-header>
 
-<div class="edit-block">
-  <div class="edit-form">
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <div><h1>Profil d'utilisateur</h1></div>
+<div class="cards">
+  <div class="edit-block">
+    <div class="edit-form">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div><h1>Profil d'utilisateur</h1></div>
 
-      <div class="block">
-        <div><label>Nom d'utilisateur</label></div>
-        <div>
-          <input
-            matInput
-            [type]="'text'"
-            formControlName="name"
-            value="{{ user?.name }}"
-          />
+        <div class="name-block">
+          <div><label>Nom d'utilisateur</label></div>
+          <div>
+            <input
+              matInput
+              [type]="'text'"
+              formControlName="name"
+              value="{{ user?.name }}"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="block">
-        <div><label>E-mail</label></div>
-        <div>
-          <input
-            matInput
-            [type]="'text'"
-            formControlName="email"
-            value="{{ user?.email }}"
-          />
+        <div class="email-block">
+          <div><label>E-mail</label></div>
+          <div>
+            <input
+              matInput
+              [type]="'text'"
+              formControlName="email"
+              value="{{ user?.email }}"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="block">
-        <div><label>Mot de passe</label></div>
-        <div>
-          <input matInput [type]="'password'" formControlName="password" />
+        <div class="password-block">
+          <div><label>Mot de passe</label></div>
+          <div>
+            <input matInput [type]="'password'" formControlName="password" />
+          </div>
         </div>
-      </div>
 
-      <div class="button-block">
-        <div class="save-button">
-          <button
-            mat-raised-button
-            color="#7550EC"
-            type="submit"
-            [disabled]="form.invalid"
-          >
-            Sauvegarder
-          </button>
+        <div class="button-block">
+          <div class="save-button">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="form.invalid"
+            >
+              Sauvegarder
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
 
-  <div class="logout-button">
-    <button (click)="logOut()">Se déconnecter</button>
+    <div class="logout-button">
+      <button (click)="logOut()">Se déconnecter</button>
+    </div>
   </div>
 </div>
 
 <div class="line"></div>
 
-<div class="user-sub"><h1>Abonnements</h1></div>
+<div class="user-sub-title"><h1>Abonnements</h1></div>
 
-<div class="subject-wrapper">
-  <div *ngFor="let subject of subjects">
-    <div class="subject-card">
+<div class="subject-cards">
+  <div class="subject" *ngFor="let subject of subjects">
+    <div >
       <mat-card>
         <mat-card-title> {{ subject.name }}</mat-card-title>
         <mat-card-content>
           <p>{{ subject.description }}</p>
         </mat-card-content>
-        <div class="subject-follow-button">
-          <button mat-button type="submit" (click)="unfollow(subject.id)">
+        <div class="subject-unfollow-button">
+          <button mat-raised-button type="submit" color="primary" (click)="unfollow(subject.id)">
             Se désabonner
           </button>
         </div>
