@@ -1,11 +1,13 @@
-.back-arrow {
-  margin-top: 1rem;
-  margin-left: 2rem;
+@media screen and (min-width: 768px) {
+  .back-arrow {
+    margin-top: 15px;
+    margin-left: 15px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .back-arrow {
-    margin-top: 0.2rem;
-    margin-left: 0.2rem;
+    margin-top: 5px;
+    margin-left: 5px;
   }
 }
