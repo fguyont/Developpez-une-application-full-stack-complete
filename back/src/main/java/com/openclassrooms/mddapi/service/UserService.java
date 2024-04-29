@@ -29,6 +29,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public User getById(Long id) {
+        return this.userRepository.findById(id).orElse(null);
+    }
+
     /**
      * Service to get the connected user
      * @return User: the connected user
