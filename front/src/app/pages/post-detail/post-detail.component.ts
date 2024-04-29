@@ -36,7 +36,8 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     text: [
       '',
       [
-        Validators.required
+        Validators.required,
+        Validators.max(2000),
       ]
     ]
   });
