@@ -27,11 +27,16 @@
         </div>
       </div>
       <div class="button-block">
-        <button mat-raised-button type="submit" color="primary" [disabled]="form.invalid">
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary"
+          [disabled]="form.invalid"
+        >
           S'inscrire
         </button>
       </div>
-      <p *ngIf="onError" color="red">Erreur de saisie</p>
+      <p *ngIf="onError">Erreur de saisie ou e-mail déjà existant</p>
     </form>
   </div>
 </div>
