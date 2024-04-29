@@ -44,6 +44,7 @@ export class SubjectComponent implements OnInit, OnDestroy {
     });
   }
 
+  // The result will set the button to follow the subject (disabled or not)
   public isAlreadyFollowed(subjectId: number): boolean {
     if (this.user) {
       return this.user?.subjectIds.includes(subjectId);
