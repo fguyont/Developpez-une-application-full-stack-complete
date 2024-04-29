@@ -48,6 +48,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   });
 
   ngOnInit(): void {
+    // to gather all the subjects into the subject dropdown
     this.subjectService
       .getAll()
       .subscribe((subjects: Subject[]) => this.subjects = subjects);
@@ -56,7 +57,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   public submit() {
     let createPostRequest = this.form.value as CreatePostRequest;
     this.createService$ = this.postService.create(createPostRequest).subscribe(() => {
-      this.router.navigateByUrl('post');
+      this.router.navigateByUrl('/post');
     })
   }
 
