@@ -12,8 +12,8 @@
           placeholder="Sélectionner un thème"
           formControlName="subjectId"
         >
-          <mat-option *ngFor="let subject of subjects" [value]="subject.id">
-            {{ subject.name }}
+          <mat-option *ngFor="let subject of subjects" [value]="subject.id"
+            >{{ subject.name }}
           </mat-option>
         </mat-select>
       </div>

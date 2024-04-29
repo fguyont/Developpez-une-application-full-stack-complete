@@ -64,14 +64,19 @@
 
 <div class="subject-cards">
   <div class="subject" *ngFor="let subject of subjects">
-    <div >
+    <div>
       <mat-card>
         <mat-card-title> {{ subject.name }}</mat-card-title>
         <mat-card-content>
           <p>{{ subject.description }}</p>
         </mat-card-content>
         <div class="subject-unfollow-button">
-          <button mat-raised-button type="submit" color="primary" (click)="unfollow(subject.id)">
+          <button
+            mat-raised-button
+            type="submit"
+            color="primary"
+            (click)="unfollow(subject.id)"
+          >
             Se désabonner
           </button>
         </div>
