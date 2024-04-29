@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { RegisterRequest } from 'src/app/models/register-request';
 import { Subject } from 'src/app/models/subject';
 import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
 import { SessionService } from 'src/app/services/session.service';
 import { SubjectService } from 'src/app/services/subject.service';
 import { UserService } from 'src/app/services/user.service';
@@ -78,7 +77,10 @@ export class UserComponent implements OnInit, OnDestroy {
     const registerRequest = this.form.value as RegisterRequest;
     if (this.user) {
       this.updateUserService$ = this.userService.updates(registerRequest).subscribe({
-        next: () => this.router.navigate(['/login']),
+        next: () => {
+          this.sessionService.logOut();
+          this.router.navigate(['/login']);
+        },
         error: _ => this.onError = true,
       }
       );
