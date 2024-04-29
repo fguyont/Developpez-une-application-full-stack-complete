@@ -3,12 +3,24 @@
   .subject-cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  mat-card-content p {
+    height: 120px;
+    line-height: 40px;
+    overflow: hidden;
+  }
 }
 
 @media (max-width: 767px) {
 
   .subject-cards {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  mat-card-content p {
+    height: 100px;
+    line-height: 25px;
+    overflow: hidden;
   }
 }
 
