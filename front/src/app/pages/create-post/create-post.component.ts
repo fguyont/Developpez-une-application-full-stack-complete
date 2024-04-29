@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CreatePostRequest } from 'src/app/models/create-post-request';
@@ -25,12 +25,26 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     private fb: FormBuilder) { }
 
   form = this.fb.group({
-    subjectId:
+    subjectId: [
       '',
-    title:
+      [
+        Validators.required
+      ]
+    ],
+    title: [
       '',
-    text:
+      [
+        Validators.required,
+        Validators.max(50),
+      ]
+    ],
+    text: [
       '',
+      [
+        Validators.required,
+        Validators.max(5000),
+      ]
+    ],
   });
 
   ngOnInit(): void {
