@@ -21,6 +21,14 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public boolean existsByEmail (String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    public void save (User user) {
+        userRepository.save(user);
+    }
+
     /**
      * Service to get the connected user
      * @return User: the connected user
