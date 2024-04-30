@@ -29,6 +29,11 @@ public class UserService {
         userRepository.save(user);
     }
 
+    /**
+     * Service to get the user by id
+     * @param id: user id
+     * @return User: the user
+     */
     public User getById(Long id) {
         return this.userRepository.findById(id).orElse(null);
     }
