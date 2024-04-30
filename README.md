@@ -41,6 +41,7 @@ MDD is a social network. Users can post articles about software development, sub
 - You will need to create a new user by clicking on 'S'inscrire' button from the default page
 - Insert a username, an email address and a password
 - The password must contain at least 8 characters including at least 1 uppercase character, at least 1 numeric character and at least 1 special character
+- After being registered, you will be redirected on login page
 
 ## Author
 
